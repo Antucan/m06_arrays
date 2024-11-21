@@ -26,7 +26,7 @@ llistaUsuaris.forEach(function (usuari, pos) {
 let llistaSplice = [0, 1, 2, 3, 4, 5, 6, 7];
 console.log(llistaSplice);
 //accedes a la pos, borras y pones a kike
-llistaSplice.splice(0, 0, "nigger");
+llistaSplice.splice(0, 0, "abalau");
 console.log(llistaSplice);
 
 //function
