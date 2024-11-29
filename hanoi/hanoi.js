@@ -22,3 +22,33 @@ document.getElementById("start").addEventListener("click", function () {
         }
     }
 });
+//actualizar pila1
+function actualizarP1() {
+    torre1.innerHTML = "";
+    for (i = 0; i < pilas[0].length; i++) {
+        torre1.innerHTML += "<div id='n" + pilas[0][i].value + "'>"
+            + pilas[0][i] + "</div>";
+    }
+}
+
+//buttons to move stacks
+let t1b2 = document.getElementById("t1p2");
+let t1b3 = document.getElementById("t1p3");
+let t2b1 = document.getElementById("t2p1");
+let t2b3 = document.getElementById("t2p3");
+let t3b1 = document.getElementById("t3p1");
+let t3b2 = document.getElementById("t3p2");
+let resultat = document.getElementById("resultat");
+t1b2.addEventListener("click", function () {
+    let pieza = pilas[0].shift();
+    pilas[1].push(pieza);
+    actualizarP1();
+    torre2.innerHTML = "";
+    for (i = 0; i < pilas[1].length; i++) {
+        torre2.innerHTML += "<div id='n" + pilas[1][i].value + "'>"
+            + pilas[1][i] + "</div>";
+    }
+})
+
+
+
