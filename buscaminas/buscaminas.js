@@ -5,8 +5,11 @@ let minePositions = [];
 let resultat = document.getElementById("resultat");
 let cellImage = document.getElementsByClassName("cell");
 let revealedCells = 0;
+let scoreElement = document.getElementById("score");
+let scoreCount = 1;
 
 function createGrid() {
+    scoreElement.innerHTML = "";
     grid = [];
     game.innerHTML = '';
     gameOver = false;
@@ -55,7 +58,6 @@ function clickCell(event) {
 function getCell(row, col) {
     row = Number(row);
     col = Number(col);
-
     let cell = grid[row][col];
     if (cell.revealed) return; //si ya esta clickada 
     cell.revealed = true;
@@ -68,13 +70,15 @@ function getCell(row, col) {
         cellElement.classList.add('mine');
         resultat.innerHTML = "GAME OVER!";
         gameOver = true;
-
+        scoreCount = 1;
         //revelar minas
         minePositions.forEach(pos => {
             let mineCell = game.children[pos.row * 8 + pos.col];
             mineCell.classList.add('mine');
         })
     } else {
+        scoreElement.innerHTML = scoreCount;
+        scoreCount++;
         //revelar celdas
         let count = countMines(row, col);
         if (count > 0) {
