@@ -24,7 +24,9 @@ function createGrid() {
             cell.dataset.col = j;
             cell.addEventListener('click', clickCell);
             game.appendChild(cell);
-            grid[i][j] = { revealed: false, mine: false };
+            //revealed se inicia false para indicar que está oculta
+            //la celda no tiene mina todavia, lo inicio false
+            grid[i][j] = { revealed: false, mine: false };//objeto
         }
     }
     // console.log(grid);
