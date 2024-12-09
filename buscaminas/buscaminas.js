@@ -6,7 +6,7 @@ let resultat = document.getElementById("resultat");
 let cellImage = document.getElementsByClassName("cell");
 let revealedCells = 0;
 let scoreElement = document.getElementById("score");
-let scoreCount = 1;
+let scoreCount = 0;
 
 function createGrid() {
     scoreElement.innerHTML = "";
@@ -69,21 +69,21 @@ function getCell(row, col) {
     if (cell.mine) {
         cellElement.classList.add('mine');
         resultat.innerHTML = "GAME OVER!";
+        resultat.style.color = 'red';
         gameOver = true;
-        scoreCount = 1;
+        scoreCount = 0;
         //revelar minas
         minePositions.forEach(pos => {
             let mineCell = game.children[pos.row * 8 + pos.col];
             mineCell.classList.add('mine');
         })
     } else {
-        scoreElement.innerHTML = scoreCount;
-        scoreCount++;
         //revelar celdas
         let count = countMines(row, col);
         if (count > 0) {
+            scoreCount++;
+            scoreElement.innerHTML = scoreCount;
             cellElement.innerHTML = count;
-            resultat.innerHTML = "EMPTY";
         } else {
             revealCells(row, col);
         }
@@ -94,6 +94,7 @@ function getCell(row, col) {
             mineCell.classList.add('mine');
         })
         resultat.innerHTML = "YOU WIN!";
+        resultat.style.color = 'white';
         gameOver = true;
     }
 }
@@ -131,6 +132,7 @@ function isValidCell(row, col) {
 }
 
 document.getElementById("start").addEventListener("click", function () {
+    scoreCount = 0;
     createGrid();
     resultat.innerHTML = "";
 })

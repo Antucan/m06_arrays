@@ -13,6 +13,7 @@ document.getElementById("start").addEventListener("click", function () {
         alert("Inserta un número entre 3 y 5");
     } else {
         document.getElementById("game").style.pointerEvents = "auto";
+        resultat.innerHTML = "";
         torre1.innerHTML = "";
         pilas = [[], [], []];
         torre1.innerHTML = "";
